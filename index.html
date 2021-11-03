@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Authblox Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div id="auth-success-alert" class="alert alert-success mt-2 d-none">
+                You successfully logged in with Authblox! The auth ID in your URL bar can be sent to your server to validate the authorization and get the user's information. For this demo, you won't be able to get that info.
+            </div>
+            <div class="login-form bg-light mt-4 p-4">
+                <form action="" method="" class="row g-3">
+                    <h4>Demo App</h4>
+                    <a href="http://auth.mverse.app/auth/eLiOPQvY4OMm5jYuzAxy" class="btn btn-primary fw-bolder">
+                        <img src="white.png" width="24px"/>
+                        &nbsp;&nbsp;Continue with Authblox
+                    </a>
+                    <div class="col-12 text-center fw-bold my-3">
+                        - or -
+                    </div>
+                    <div class="col-12">
+                        <label>Username</label>
+                        <input disabled type="text" name="username" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="col-12">
+                        <label>Password</label>
+                        <input disabled type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe"> Remember me</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button disabled type="submit" class="btn btn-dark float-end">Login</button>
+                    </div>
+                </form>
+                <hr class="mt-4">
+                <div class="col-12">
+                    <p class="text-center mb-0">
+                        This demo simulates using Authblox to sign in users to your web app. For this demo, normal login is disabled and users must choose "Continue with Authblox"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  window.onload = function(event) {
+    var authSuccess = getParameterByName("authorizationId");
+    if (authSuccess !== null){
+        if (authSuccess){
+          document.querySelector("#auth-success-alert").classList.remove('d-none');
+        }
+    }
+  };
+
+  function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+</script>
+</body>
+</html>
